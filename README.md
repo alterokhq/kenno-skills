@@ -1,6 +1,6 @@
 # Kenno agent skill
 
-Optional guidance for working with your team's living plans in [Kenno](https://kenno.dev). The Kenno MCP connection provides the tools and complete workflow; the skill adds reminders about collaboration, reporting evidence and safe retries.
+Optional guidance for working with your team's living plans in [Kenno](https://kenno.ai). The Kenno MCP connection provides the tools and complete workflow; the skill adds reminders about collaboration, reporting evidence and safe retries.
 
 ## Connect first
 
