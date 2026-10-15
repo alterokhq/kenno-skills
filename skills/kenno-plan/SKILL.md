@@ -1,11 +1,11 @@
 ---
 name: kenno-plan
-description: Work with a Kenno plan when asked to publish, read, edit, build, report progress, or fix its GitHub checks. Use the configured Kenno MCP connection and preserve the team's decisions and earlier reports.
+description: Work with a kenno plan when asked to publish, read, edit, build, report progress, or fix its GitHub checks. Use the configured kenno MCP connection and preserve the team's decisions and earlier reports.
 ---
 
-# Kenno plans
+# kenno plans
 
-Use the connected Kenno MCP server. Call `connection_status` first and follow its current instructions and tool schemas. The skill is optional; MCP carries the required workflow. Keep credentials in MCP authentication, never in plan text or source files.
+Use the connected kenno MCP server. Call `connection_status` first and follow its current instructions and tool schemas. The skill is optional; MCP carries the required workflow. Keep credentials in MCP authentication, never in plan text or source files.
 
 ## Read and shape
 
@@ -31,9 +31,11 @@ For an existing plan, read the complete document and `edit_targets`, then use `u
 
 When asked to build, use `read_plan` section `work`, then read every content chunk and item page of the returned `read_version` snapshot. Call `start_run`. Omit `blockIds` for the first full build unless asked for a subset. Respect another agent's claims.
 
-Keep the returned run, session and control revision. Report meaningful progress and blockers so teammates can see the work. Use `ask_question` for team decisions and `read_run` section `answer` for the canonical response. Reports refer to the assigned snapshot even while the live plan changes.
+Keep the returned run, session and control revision. Report meaningful progress and blockers so teammates can see the work: one or two sentences, at the end of each step and at least every 20 minutes during a long one. Your claims are leases that each report, question or run read renews; after 30 minutes of silence another agent may take an item over (`ITEM_RELEASED` on your next report means it did; read the plan and the run again). If your session dies, call `start_run` again: the same connection takes its own unfinished items back after two minutes of silence (the error says how long is left). Use `ask_question` for team decisions and `read_run` section `answer` for the canonical response. Reports refer to the assigned snapshot even while the live plan changes. Every report and `read_run` summary answers with `planChanges`: the open items whose text the plan has moved past since you read them. Above zero, capture a fresh snapshot with `read_plan` section `work` and read those item pages before continuing; the plan then shows teammates which text you built from. For an item already completed, claim it again with `blockIds` and `reworkReason`.
 
-Submit completed work with factual evidence and limitations. Include every assigned condition ID once, or `conditions: []` when none exist. Report intentionally omitted work as skipped or deferred with a reason. The run finishes when every assigned item has an outcome. No plan approval or item acceptance is required.
+Write for a narrow panel: one or two sentences per report, the SHA and the PR as plain refs (kenno shortens and links them), and no local paths in the text. Report completed work and its limitations even when no evidence is available. Include every assigned condition ID once, or `conditions: []` when none exist. Evidence is optional: use `artifacts: []` for a condition without it. Such a condition stays “reported”; completing a run does not independently verify the work. Report intentionally omitted work as skipped or deferred with a reason. The run finishes when every assigned item has an outcome. No plan approval or item acceptance is required.
+
+When evidence is available, attach what was actually observed: a GitHub check by its name on the PR (`kind: "check"`; kenno resolves it on the PR head), a screenshot or test-run address with a short `label`, the repository's verify command with its exit code as `label` and trimmed output as `detail`, or the commit. Screenshots and browser verification are not prerequisites for reporting completion; follow the task's verification requirements and the repository's artifact policy. Link accessible screenshots when available; do not commit them just to satisfy reporting. If known, send `headSha`, the commit the evidence was produced at, so a later push can mark it stale. Never invent evidence or claim checks passed without observing them.
 
 ## Fix and ship
 
@@ -43,4 +45,4 @@ For requested fixes to completed work, capture and read a fresh snapshot, then s
 
 ## Recover safely
 
-Keep each write's UUID and exact arguments until confirmed. Retry an uncertain response with identical input and the same request ID, including the final report. Don't retry under a new identity. Stop using a replaced session or control revision. If authorization is unusable, reconnect through Kenno and verify with `connection_status`.
+Keep each write's UUID and exact arguments until confirmed. Retry an uncertain response with identical input and the same request ID, including the final report. Don't retry under a new identity. Stop using a replaced session or control revision. If authorization is unusable, reconnect through kenno and verify with `connection_status`.

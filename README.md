@@ -1,10 +1,10 @@
-# Kenno agent skill
+# kenno agent skill
 
-Optional guidance for working with your team's living plans in [Kenno](https://kenno.dev). The Kenno MCP connection provides the tools and complete workflow; the skill adds reminders about collaboration, reporting evidence and safe retries.
+Optional guidance for working with your team's living plans in [kenno](https://kenno.ai). The kenno MCP connection provides the tools and complete workflow; the skill adds reminders about collaboration, reporting evidence and safe retries.
 
 ## Connect first
 
-Sign in to Kenno with GitHub and open **Settings → Connect an agent**. Copy the commands for Claude Code or Codex, authorize access in your browser, then use the verification prompt shown in Kenno. Each connection belongs to one person and one workspace. You do not need to connect a GitHub repository to collaborate or report agent work.
+Sign in to kenno with GitHub and open **Settings → Connect an agent**. Copy the commands for Claude Code or Codex, authorize access in your browser, then use the verification prompt shown in kenno. Each connection belongs to one person and one workspace. You do not need to connect a GitHub repository to collaborate or report agent work.
 
 ## Install the optional skill
 
@@ -26,6 +26,6 @@ Installing this skill does not authorize a connection, grant repository access o
 
 ## Use it
 
-Ask your agent to read a Kenno plan URL, publish a plan you've discussed, build a plan, or fix its failing checks. You can explicitly invoke `/kenno-plan` in Claude Code or `$kenno-plan` in Codex.
+Ask your agent to read a kenno plan URL, publish a plan you've discussed, build a plan, or fix its failing checks. You can explicitly invoke `/kenno-plan` in Claude Code or `$kenno-plan` in Codex.
 
 Plans remain editable while agents work. Reports stay attached to the text assigned to each run. Agent reports describe what the agent did; GitHub checks, reviews and merges provide separate verification. Final merging happens on GitHub.
