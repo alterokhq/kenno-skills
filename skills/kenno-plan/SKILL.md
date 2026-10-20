@@ -23,7 +23,7 @@ The team reads a plan before anything is built, often including people who don't
 
 ## Publish
 
-Publish only when the user asks. `create_plan` takes a title, the Markdown, a fresh UUID `requestId` and, in a checkout, its `repository` (`owner/repo`); `dryRun: true` only validates. Return the canonical URL. Ordinary Markdown, including tables and `mermaid` diagrams, is context. Work needs structured blocks, each with an ID that is unique in the plan and stays stable. Put WorkItem and Question tags on their own lines with blank lines around them:
+Publish only when the user asks. `create_plan` takes a title, the Markdown, a fresh UUID `requestId` and, in a checkout, its `repository` (`owner/repo`); `dryRun: true` only validates. Return the canonical URL. Ordinary Markdown, including tables, `mermaid` diagrams and callouts (`> [!WARNING]`, or NOTE, TIP, IMPORTANT, CAUTION) for the one thing a reader mustn't miss, is context. Work needs structured blocks, each with an ID that is unique in the plan and stays stable. Put WorkItem and Question tags on their own lines with blank lines around them:
 
 ```md
 Customers can pause a monthly subscription for up to three months instead of cancelling. Support handles these requests by hand today. Annual plans are out of scope.
