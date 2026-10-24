@@ -12,6 +12,7 @@ Use the connected kenno MCP server. Call `connection_status` first and follow it
 The team reads a plan before anything is built, often including people who don't write code. A coding agent builds it later, with the repository in front of it. Write for a teammate who wasn't in your conversation. Short is good; thin is not: keep every decision, risk and done-check that matters, and cut everything else.
 
 - **Lead with the outcome.** Two or three plain sentences: what changes, for whom, and why. A reader who stops there should get the point.
+- **Make it portable.** Someone handed only the plan's link and the repository should find the outcome, what's decided, what's still open, the PR if one exists, and who acts next. End with a short pickup line saying who that is, whether design is needed and where to start reading. Never point at your conversation or files only you have.
 - **Scale to the task.** A bug fix can be a paragraph and one work item; a larger change earns a few short sections. No template is required.
 - **Don't retell the context.** Teammates know their product and the builder can read the code. Mention a finding only where it changes the plan, and say each thing once. Use plain words, the requester's where you can; name a file or command only when the builder needs it to find the place.
 - **Check the premise.** If a reported cause, number or assumption doesn't add up, say so and plan how to confirm it rather than building on it.
@@ -23,7 +24,11 @@ The team reads a plan before anything is built, often including people who don't
 
 ## Publish
 
-Publish only when the user asks. `create_plan` takes a title, the Markdown, a fresh UUID `requestId` and, in a checkout, its `repository` (`owner/repo`); `dryRun: true` only validates. Return the canonical URL. Ordinary Markdown, including tables, `mermaid` diagrams and callouts (`> [!WARNING]`, or NOTE, TIP, IMPORTANT, CAUTION) for the one thing a reader mustn't miss, is context. Work needs structured blocks, each with an ID that is unique in the plan and stays stable. Put WorkItem and Question tags on their own lines with blank lines around them:
+Publish only when the user asks. If the person, a PR or the conversation names a plan for this work, update that one (Read and edit) instead of publishing another.
+
+Publishing isn't building. After a request to plan, return the URL and stop: don't call `start_run` or start the work until the person asks. A request that already asked you to build counts. A question nobody has answered stays open; don't build on a default as if it were agreed.
+
+`create_plan` takes a title, the Markdown, a fresh UUID `requestId` and, in a checkout, its `repository` (`owner/repo`); `dryRun: true` only validates. Return the canonical URL. Ordinary Markdown, including tables, `mermaid` diagrams and callouts (`> [!WARNING]`, or NOTE, TIP, IMPORTANT, CAUTION) for the one thing a reader mustn't miss, is context. Work needs structured blocks, each with an ID that is unique in the plan and stays stable. Put WorkItem and Question tags on their own lines with blank lines around them:
 
 ```md
 Customers can pause a monthly subscription for up to three months instead of cancelling. Support handles these requests by hand today. Annual plans are out of scope.
