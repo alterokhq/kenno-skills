@@ -19,6 +19,7 @@ The team reads a plan before anything is built, often including people who don't
 - **Ask about decisions the team owns:** scope, money, legal or customer impact, anything hard to undo, or why something was held back. Don't settle those yourself, even as a default; if you're unsure whether a choice is the team's, ask. For small, reversible choices, pick a default and say so; state what has an obvious answer instead of asking.
 - **Name the real risks and what's out of scope**, a line each: data loss, security, scale, rollout, or work someone could reasonably expect.
 - **Keep work items few.** Each is a result that can be built, reviewed and, if needed, reverted on its own, titled by what will be true when it's done. Include rollout or cleanup when it's real work. Leave steps, file-by-file changes and tests to the builder.
+- **Describe behaviour, not code, in item text.** Say what people can do or see and what the system does. Keep file, function, table and field names out where you can: they belong in the code and the PR.
 - **Give each item the conditions that decide whether it's done**, usually one or two and more for risky ones, phrased so someone can check them. Don't restate the description.
 - **Cut before you publish.** Delete what restates the request, repeats another section or narrates your research. A plan longer than the change it describes has written the change.
 
