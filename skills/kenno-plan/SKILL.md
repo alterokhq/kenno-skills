@@ -14,13 +14,13 @@ The team reads a plan before anything is built, often including people who don't
 - **Lead with the outcome.** Two or three plain sentences: what changes, for whom, and why. A reader who stops there should get the point.
 - **Make it portable.** Someone handed only the plan's link and the repository should find the outcome, what's decided, what's still open, the PR if one exists, and who acts next. End with a short pickup line saying who that is, whether design is needed and where to start reading. Never point at your conversation or files only you have.
 - **Scale to the task.** A bug fix can be a paragraph and one work item; a larger change earns a few short sections. No template is required.
-- **Don't retell the context.** Teammates know their product and the builder can read the code. Mention a finding only where it changes the plan, and say each thing once. Use plain words, the requester's where you can; name a file or command only when the builder needs it to find the place.
+- **Don't retell the context.** Teammates know their product and the builder can read the code. Mention a finding only where it changes the plan, and say each thing once. Use plain words, the requester's where you can.
 - **Check the premise.** If a reported cause, number or assumption doesn't add up, say so and plan how to confirm it rather than building on it.
 - **Ask about decisions the team owns:** scope, money, legal or customer impact, anything hard to undo, or why something was held back. Don't settle those yourself, even as a default; if you're unsure whether a choice is the team's, ask. For small, reversible choices, pick a default and say so; state what has an obvious answer instead of asking.
 - **Name the real risks and what's out of scope**, a line each: data loss, security, scale, rollout, or work someone could reasonably expect.
 - **Keep work items few.** Each is a result that can be built, reviewed and, if needed, reverted on its own, titled by what will be true when it's done. Include rollout or cleanup when it's real work. Leave steps, file-by-file changes and tests to the builder.
-- **Describe behaviour, not code, in item text.** Say what people can do or see and what the system does. Keep file, function, table and field names out where you can: they belong in the code and the PR.
-- **Give each item the conditions that decide whether it's done**, usually one or two and more for risky ones, phrased so someone can check them. Don't restate the description.
+- **Describe behaviour, not code, in items and conditions.** Say what changes for the people using the product, what they can do or see and why, in the product's language. No file paths, table or column names, function names, commands, libraries or test tooling: how to build it is the builder's job and shows in the reports and the PR.
+- **Give each item the conditions that decide whether it's done**, usually one or two and more for risky ones. Each says what someone can see or do when it's done ("Voting again on the same suggestion doesn't add a second vote"), not how the code is tested. Don't restate the description.
 - **Cut before you publish.** Delete what restates the request, repeats another section or narrates your research. A plan longer than the change it describes has written the change.
 
 ## Publish
